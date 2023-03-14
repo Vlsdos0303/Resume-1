@@ -1,0 +1,21 @@
+<a href='{{href}}' {{#if blank}}target='_blank'{{/if}}>{{text}}</a> 
+
+
+
+
+
+{{#unless noLine}}
+         {{#if line}}
+             ==
+           {{else}}
+              /
+        {{/if}} 
+{{/unless}}
+
+<div>
+{{#unless company.url  }}
+<a href="{{company.url }}" target="_blank">{{company.name }}</a>
+{{else}}
+ <b>{{company.name }}</b>
+{{/unless}}
+</div>
