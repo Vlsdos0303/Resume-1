@@ -1,0 +1,113 @@
+{{! 
+Це код container файлу для summary сторінки, 
+в якому міститься код, котрий буде віддаватися по шляху (PATH) - "/summary"
+}}
+
+<header>
+  <head>
+    <div>
+      <h1>{{name}}</h1>
+      <em>{{description}}</em>
+    </div>
+    <div><b>{{price}}</b></div>
+    <br />
+    <div>{{category}}</div>
+  </head>
+</header>
+
+<main>
+  <div>
+    {{#with features}}
+    {{> title data="Processor"big=true}}
+      {{#with processor}}
+        <ul>
+          <li>{{brand}}</li>
+          <li>{{model}}</li>
+          <li>{{speed}}</li>
+          <li>{{cores}}</li>
+          <li>{{cache}}</li>
+        </ul>
+      {{/with}}
+      <hr>
+      {{> title data="Memory"big=true}}
+      {{#with memory}}
+        <ul>
+          <li>{{type}}</li>
+          <li>{{size}}</li>
+          <li>{{speed}}</li>
+        </ul>
+      {{/with}}
+      <hr>
+      {{> title data="Storage"big=true}}
+      {{#with storage}}
+        <ul>
+          <li>{{type}}</li>
+          <li>{{size}}</li>
+        </ul>
+      {{/with}}
+      <hr>
+      {{> title data="Display"big=true}}
+      {{#with display}}
+        <ul>
+          <li>{{size}}</li>
+          <li>{{resolution}}</li>
+          <li>{{technology}}</li>
+          <li>{{color_space}}</li>
+          <li>{{brightness}}</li>
+          <li>{{refresh_rate}}</li>
+        </ul>
+      {{/with}}
+       <hr>
+      {{> title data="Graphics"big=true}}
+      {{#with graphics}}
+        <ul>
+          <li>{{brand}}</li>
+          <li>{{model}}</li>
+          <li>{{memory}}</li>
+        </ul>
+      {{/with}}
+      {{> title data="Ports"big=true}}
+      {{#each ports}}
+        <ul>
+          <li>{{type}}</li>
+          <li>{{count}}</li>
+          <li>{{features}}</li>
+        </ul>
+      {{/each}}
+      <hr>
+      {{> title data="Battery"big=true}}
+      {{#with battery}}
+        <ul>
+          <li>{{type}}</li>
+          <li>{{capacity}}</li>
+          <li>{{life}}</li>
+        </ul>
+      {{/with}}
+     <div>{{weight}}</div> 
+      <hr>
+      {{> title data="Dimensions"big=true}}
+      {{#with dimensions}}
+        <ul>
+          <li>{{height}}</li>
+          <li>{{width}}</li>
+          <li>{{depth}}</li>
+        </ul>
+      {{/with}}
+{{> title data="Operating system"big=true}}
+      <em>{{operating_system}}</em>
+
+{{> title data="Accessories"big=true}}
+      {{#each accessories}}
+      <ul>
+        <li>{{name}}</li>
+        <li>{{price}}</li>
+      </ul>
+      {{/each}}
+    {{/with}}
+  </div>
+</main>
+
+{{!-- 
+    Цей код містить лише те, що буде виводитись в {{{body}}} в layout/default.hbs
+    Адже наш layout/default.hbs має вже структуру HTML
+--}}
