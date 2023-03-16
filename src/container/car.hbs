@@ -1,0 +1,154 @@
+{{! 
+Це код container файлу для summary сторінки, 
+в якому міститься код, котрий буде віддаватися по шляху (PATH) - "/summary"
+}}
+<head>
+  <header>
+    <div>
+      <h1>{{make}}</h1>
+      <h1>{{model}}</h1>
+      <h2>{{year}}</h2>
+      <h2>{{color}}</h2>
+    </div>
+  </header>
+</head>
+<hr />
+<br />
+<main>
+    {{> title data="Interior"big=true}}
+   <em> <h4>Seats</h4></em>
+  {{#with features}}
+    {{#with interior}}
+      {{#with seats}}
+        <ul>
+          <li>{{material}}</li>
+          <li>{{color}}</li>
+          <li>{{heated}}</li>
+          <li>{{ventilated}}</li>
+        </ul>
+        <br>
+      {{/with}}
+      <em> <h4>Dashboard</h4></em>
+      {{#with dashboard}}
+          <li>{{material}}</li>
+          <li>{{color}}</li>
+          <em> <h4>display</h4></em>
+          {{#with display}}
+          <ul>
+            <li>{{type}}</li>
+            <li>{{size}}</li>
+            <li>{{resolution}}</li>
+            <li>{{touchscreen}}</li>
+          </ul>
+          <br>
+          {{/with}}
+      {{/with}}
+      <em> <h4>Audio</h4></em>
+      {{#with audio}}
+      <ul>
+        <li>{{system}}</li>
+        <li>{{speakers}}</li>
+        <li>{{subwoofer}}</li>
+        <li>{{bluetooth}}</li>
+        <li>{{USB}}</li>
+      </ul>
+      {{/with}}
+    {{/with}}
+    <br>
+    <br>
+    <hr>
+    {{> title data="Exterior"big=true}}
+    {{#with exterior}}
+    <em> <h4>Wheels</h4></em>
+    {{#with wheels}}
+    <ul>
+        <li>{{size}}</li>
+        <li>{{type}}</li>
+        <li>{{color}}</li>
+    </ul>
+    {{/with}}
+    <em> <h4>Headlights</h4></em>
+    {{#with headlights}}
+    <ul>
+        <li>{{type}}</li>
+        <li>{{brightness}}</li>
+        <li>{{automatic}}</li>
+    </ul>
+    {{/with}}
+    <em> <h4>Sunroof</h4></em>
+    {{#with sunroof}}
+    <ul>
+        <li>{{type}}</li>
+        <li>{{size}}</li>
+        <li>{{automatic}}</li>
+    </ul>
+    {{/with}}
+    {{/with}}
+    <br>
+    <hr>
+    <br>
+    {{> title data="Safety"big=true}}
+    {{#with safety}}
+    <em> <h4>Airbags</h4></em>
+    {{#with airbags}}
+    <ul>
+        <li>{{front}}</li>
+        <li>{{side}}</li>
+        <li>{{knee}}</li>
+        <li>{{rear}}</li>
+    </ul>
+    {{/with}}
+     <em> <h4>Assistance</h4></em>
+    {{#with assistance}}
+    <ul>
+        <li>{{blind_spot_monitoring}}</li>
+        <li>{{rear_cross_traffic_alert}}</li>
+        <li>{{lane_departure_warning}}</li>
+        <li>{{adaptive_cruise_control}}</li>
+        <li>{{collision_warning}}</li>
+    </ul>
+    {{/with}}
+    {{/with}}
+  {{/with}}
+  {{> title data="Engine"big=true}}
+  {{#with engine}}
+    <h3>{{type}}</h3>
+    <ul>
+        <li>{{displacement}}</li>
+        <li>{{horsepower}}</li>
+        <li>{{torque}}</li>
+    </ul>
+    <em> <h4>Transmission</h4></em>
+    {{#with transmission}}
+    <ul>
+        <li>{{type}}</li>
+        <li>{{gears}}</li>
+    </ul>
+    {{/with}}
+    {{#with fuel_economy}}
+    <ul>
+        <li>{{city}}</li>
+        <li>{{highway}}</li>
+        <li>{{combined}}</li>
+    </ul>
+    {{/with}}
+    {{#with price}}
+    <ul>
+        <li>{{base}}</li>
+        <li>{{destination}}</li>
+        <li>{{total}}</li>
+    </ul>
+    {{#with options}}
+    <ul>
+        <li>{{navigation}}</li>
+        <li>{{navimoonroofgation}}</li>
+        <li>{{premium_paint}}</li>
+    </ul>
+    {{/with}}
+    {{/with}}
+    {{/with}}
+</main>
+{{!-- 
+    Цей код містить лише те, що буде виводитись в {{{body}}} в layout/default.hbs
+    Адже наш layout/default.hbs має вже структуру HTML
+--}}
