@@ -1,22 +1,114 @@
 {{! 
-  Це леяут по замовчюванню, котрий вже містить базову структуру HTML документа
-  І котрий обгортає код container файлів для будь-яких ендпоїнтів
+Це код container файлу для summary сторінки, 
+в якому міститься код, котрий буде віддаватися по шляху (PATH) - "/summary"
 }}
+{{#with person}}
+  <header>
+    <h1>
+      <div>
+        {{name}}
+      </div>
+      <div>
+       {{age}}
+       
+      </div>
+      <div>
+        {{gender}}
+      </div>
+    </h1>
+  </header>
 
-<html>
-  <head>
-    <title>
-      {{page.title}}
-    </title>
-    <meta charset='utf-8' />
-    <link href='css/index.css' rel='stylesheet' />
-  </head>
+  <br />
 
-  <body>
+  {{#with address}}
+{{> title data="Address" big=true}}
+   <ul>
+    <li>{{street}} </li>
+    <li> {{city}}</li>
+    <li>{{state}}</li>
+    <li>{{zip}}</li>
+    <li>{{country}}</li>
+   </ul>
+    {{/with}}
+    
+    {{#each education}}
+    {{> title data="Education" big=true}}
+    <ul>
+        <li>{{degree}}</li>
+        <li>{{major}}</li>
+        <li>{{university}}</li>
+        <li>{{graduationYear}}</li>
+    </ul>
+{{/each}}
+    {{#each workExperience}}
+    {{> title data="WorkExperience" big=true}}
+    <ul>
+        <li>{{company}}</li>
+        <li>{{title}}</li>
+        <li>{{startDate}}</li>
+        <li>{{endDate}}</li>
+        <li>{{responsibilities}}</li>
+        <li>{{year_founded}}</li>
+        <li>{{industry}}</li>
+    </ul>
+    {{#each employees}}
+    {{> title data="Employees" big=true}}
+    <ul>
+        <li>{{name}}</li>
+        <li>{{position}}</li>
+        <li>{{department}}</li>
+    </ul>
+    {{#each projects}}
+     {{> title data="Projects" big=true}}
+     <ul>
+        <li>{{name}}</li>
+        <li>{{description}}</li>
+        <li>{{status}}</li>
+     </ul>
+     {{#each teams}}
+     {{> title data="Teams" big=true}}
+     <ul>
+        <h1>{{team_name}}</h1>
+        <h4>{{> title data="Team leader" big=true}}</h4>
+        <li>{{team_leader.name}}</li>
+        <li>{{team_leader.title}}</li>
+        <li>{{team_leader.email}}</li>
+     </ul>
+     <br>
+     <br>
+     {{#each team_members}}
+     <div><h4>{{> title data="Team members" big=true}}</h4></div>
+     <ul>
+        <li>{{name}}</li>
+        <li>{{title}}</li>
+        <li>{{email}}</li>
+        <li>{{skills}}</li>
+     </ul>
+     
+     {{#each projects}}
+     <h4>{{> title data="Projects" big=true}}</h4>
+     <ul>
+        <li>{{name}}</li>
+        <li>{{description}}</li>
+        <li>{{technologies}}</li>
+     </ul>
+     <h4>{{> title data="Team members" big=true}}</h4>
+     {{#each team_members}}
+     <ul>
+        <li>{{name}}</li>
+        <li>{{title}}</li>
+     </ul>
 
-    {{!  ↓  ця кострукція показує куди шаблонізатору треба вставляти код з container файлу   }}
-    {{{body}}}
+     {{/each}}
+     {{/each}}
 
-  </body>
-
-</html>
+     {{/each}}
+     {{/each}}
+    {{/each}}
+    {{/each}}
+    {{/each}}
+{{/with}}
+{{!-- 
+    Цей код містить лише те, що буде виводитись в {{{body}}} в layout/default.hbs
+    Адже наш layout/default.hbs має вже структуру HTML
+--}}
