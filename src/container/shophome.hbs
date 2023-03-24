@@ -1,0 +1,159 @@
+<main>
+    <div class="card">
+    {{#with navigation}}
+     <div class='nav'>
+      <div class="col-7">
+        <div class="nav-item">
+         <h1>{{Logo}}</h1>
+        </div>
+
+      </div>
+      
+       {{#each links}}
+        <div class="nav-item">
+          <a class='text-end nav-link' href='{{href}}'>{{text}}</a>
+        </div>
+      {{/each}}
+     
+    {{/with}}
+  </div>
+</div>
+
+
+
+  {{#with newsBlock}}
+
+      <h2 class='text-center pt-5 '>{{title}}</h2>
+  <br />
+  <div class='row'>
+    {{#each cards}}
+      <div class='col-3'>
+        <div class='card text-bg-dark mb-2'>
+          <div class='card-header '>
+            <div>{{title}}
+              {{#if isTop}}
+                <span
+                  class='bage text-bg-success rounded-pill'
+                ><small>Toп</small></span>
+              {{/if}}
+              {{#if isNew}}
+                <span
+                  class='bage text-bg-danger rounded-pill'
+                >Нове</small></span>
+              {{/if}}
+            </div>
+          </div>
+          <div
+            class='card-body text-bg-dark ps-3'
+          >{{description}}
+          </div>
+        </div>
+      </div>
+    {{/each}}
+  </div><br />
+
+  {{/with}}
+
+  <hr />
+
+  <div>
+    <ul class='nav nav-tabs'>
+    {{#with goodsBlock}}
+    {{#each tabs}}
+
+      <li class='nav-item'>
+        <a
+          {{#if isActive}}
+          class='nav-link active'
+          {{else}}
+          class='nav-link'
+          {{/if}}
+          href='#'
+        >{{text}}</a>
+
+      </li>
+
+  
+    {{/each}}
+</ul>
+    <div class="row">
+{{#each cards}}
+<div class="col-4 g-2 ">
+          
+          <div class='card text-bg-light text-dark '>
+          
+             <div class="card-body"></div>
+          
+          <img
+              class='card-header card-img-top p-0'
+              src='{{image}}'
+              alt='{{title}}'
+            />
+           <div class="card-body"></div>
+           <div class='card-title text-header'>{{title}}
+              <span
+                class='badge text-bg-danger rounded-pill text-uppercase'
+              >Топ</span>
+              <span
+                class='badge text-bg-success rounded-pill text-uppercase'
+              >Нове</span>
+              <p class='card=text'>{{description}}</p>
+            </div>
+            </div>
+            
+            </div>
+            {{/each}}
+          </div>
+        
+
+    {{/with}}
+    <br>
+    <hr>
+    <br>
+    {{#with subscribe}}
+    <div class="card col-12 text-bg-dark ">
+        <div class="card-body ">
+            <h2>{{header}}</h2>
+            <p>{{description}}</p>
+            {{#each buttons}}
+            <a class=" btn btn-primary text-dark " href="{{link}}">{{text}}</a>
+        {{/each}}
+        </div>
+
+    </div>
+    {{/with}}
+    <br>
+    <hr>
+    <br>
+
+    {{#with service}}
+    <div class="card col-12 text-bg-dark text-center">
+        <div class="card-body">
+            <h2>{{title}}</h2>
+            <p>{{description}}</p>
+            {{#each buttons}}
+            <a class="btn btn-primary text-dark" href="{{link}}">{{text}}</a>
+        {{/each}}
+        </div>
+        </div>
+    {{/with}}
+    <br>
+    <hr>
+    <br>
+
+          <div class='nav '>
+            {{#each footer}}
+        {{#each this}}
+            <div class='nav-item'>
+              <div class='flex-column m-2'>
+              <a href='{{link}}' class='nav-link '>{{text}}</a></li>
+                
+              </div>
+               </div>
+                              {{/each}}
+        {{/each}}
+               </div>
+
+        
+
+</main>
