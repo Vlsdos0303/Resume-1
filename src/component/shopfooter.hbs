@@ -1,13 +1,25 @@
-<hr /> 
-<div class='nav '>
-            {{#each footer}}
-        {{#each this}}
-            <div class='nav-item'>
-              <div class='flex-column m-2'>
-              <a href='{{link}}' class='nav-link '>{{text}}</a></li>
-                
-              </div>
-               </div>
-                              {{/each}}
-        {{/each}}
-               </div>
+<hr />
+<div class='row'>
+  {{#each footer}}
+    <div class='col-2'>
+      {{#each this}}
+        <div class='nav'>
+          <div class='nav-item'>
+            {{#if @last}}
+              <a
+                href='{{link}}'
+                class='nav-link disabled'
+              >{{text}}</a>
+            {{else}}
+              <a
+                href='{{link}}'
+                class='nav-link'
+              >{{text}}</a>
+            {{/if}}
+
+          </div>
+        </div>
+      {{/each}}
+    </div>
+  {{/each}}
+</div>
