@@ -1,0 +1,19 @@
+    <div class="card mx-5 mt-3">
+    {{#with navigation}}
+     <div class='nav'>
+      <div class="col-7">
+        <div class="nav-item">
+         <h1>{{Logo}}</h1>
+        </div>
+
+      </div>
+      
+       {{#each links}}
+        <div class="nav-item">
+          <a class='text-end nav-link' href='{{href}}'>{{text}}</a>
+        </div>
+      {{/each}}
+     
+    {{/with}}
+  </div>
+</div>
