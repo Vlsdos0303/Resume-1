@@ -1,165 +1,163 @@
-<main class='row gy-5'>
-  <div>
-    <section class='col-12'>
+<main>
+  
+  {{>shopheader}}
 
-      <div class='card text-bg-dark'>
-        <img
-          class='card-img-top'
-          src='https://picsum.photos/1000/500'
-          alt='Product photo'
-        />
-        <div clas='card-body'>
-          <h5 class='card-title text-bg-warning'>Product
-            #124124</h5>
-          <p class='text-bg-info'>USB хаб Type C 12 d 1 HDMI</p>
-          <a href='#' class='btn btn-primary'>Open</a>
+  <nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+     {{#each breadcrumb}}
+        {{#if @last}}
+          <li class="breadcrumb-item active" aria-current="page">{{name}}</li>
+        {{else}}
+          <li class="breadcrumb-item"><a href={{url}}>{{name}}</a></li>
+        {{/if}}
+     {{/each}}
+  </ol>
+</nav>
+<br>
+<br>
+<div class='row gx-2'>
+  {{#with productData}}
+    
+      <div class='col-6'>
+        <img src={{img}}  style="width:100%">
+        <br>
+        <div class="card mt-2 ">
+                        <div class="card-body">
+                        <h5 class="card-title">{{info.title}}</h5>
+                              
+                        
+                        <p class="card-text">{{info.about}}</p>
+                        <h4>Price: {{info.price}}</h4>
+                        <div>
+                          {{#each info.category}}
+                            {{#if isHot}}
+                              <span
+                                class='bage text-bg-warning ms-1 rounded-pill'>&nbsp&nbsp{{name}}&nbsp&nbsp
+                              </span>
+                            {{/if}}
+                            {{#if isNew}}
+                              <span
+                                class='bage text-bg-primary ms-1 rounded-pill'>&nbsp&nbsp{{name}}&nbsp&nbsp
+                              </span>
+                            {{/if}}
+                            {{#if isBonus}}
+                              <span
+                                class='bage text-bg-info ms-1 rounded-pill'>&nbsp&nbsp{{name}}&nbsp&nbsp
+                              </span>
+                            {{/if}}
+
+                             
+
+                          {{/each}}
+                              
+                              
+                              
+                              
+                              
+                              {{#if idNew}}
+                              <span
+                                      class='bage text-bg-primary ms-1 rounded-pill'><small>Нове</small></span>
+                              {{/if}}
+                               </span>
+
+                        </div>
+                        
+                      </div>
+                  </div>
+      </div>
+      <div class='col-1'></div>
+      
+      <div class='col-5'>
+        <table class="table">
+          <thead>
+            <tr>
+              {{#each item.head}}
+              <th>
+                <b>{{this}}</b>
+              </th>
+              {{/each}}
+              </tr>
+          </thead>
+          <tbody>
+              {{#each item.body}}
+                <tr>
+                  {{#each this}}
+                    <th>
+                      {{this}}
+                    </th>
+                  {{/each}}
+                <th>
+              {{/each}}
+          </tbody>
+        </table>
+        <div class="card">
+           <div class="card-header">
+              {{param.title}}
+           </div>
+          <ul class="list-group list-group-flush">
+            {{#each param.list}}
+            <li class="list-group-item">{{this}}</li>
+            {{/each}}
+
+          </ul>
+        </div> <br>
+        {{#if alert.isError}}
+        <div class="alert alert-danger" role="alert">
+           {{alert.text}}
         </div>
+        {{/if}}
+
       </div>
+      
+      
 
-    </section>
 
-    <section class='col-6'>
-      Test
-    </section>
 
-    <section class='col-6'>
-      Test
-    </section>
-  </div>
 
-  <div>
-    <br />
-    <br />
-    <br />
+  {{/with}}
 
-    <div class='card'>
-      <div clas='card-body'>
-        <div class='card-header display-6'>Menu</div>
-      </div>
+</div>
 
-      <ul class='list-group'>
-        <li class='list-group-item'>
-          <a href='#' class='btn btn-link'>Home page</a>
-        </li>
-        <li class='list-group-item'>
-          <a href='#' class='btn btn-link'>Summary page</a>
-        </li>
-        <li class='list-group-item'>
-          <a href='#' class='btn btn-link'>Skills page</a>
-        </li>
-      </ul>
 
-      <div class='card-footer'>
-        <button class='btn btn-dark btn-sm'>Update list</button>
-      </div>
-    </div>
-
-    <br />
-    <br />
-    <br />
-
-    <table
-      class='table table-striped table-bordered text-bg-success'
-    >
-      <thead>
-        <tr>
-          <th>
-            #id
-          </th>
-          <th>
-            name
-          </th>
-          <th>
-            age
-          </th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td>Jhone</td>
-          <td>35</td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td>Vovka</td>
-          <td>22</td>
-        </tr>
-        <tr>
-          <td>4</td>
-          <td>Ivan</td>
-          <td>25</td>
-        </tr>
-        <tr>
-          <td>5</td>
-          <td>Misha</td>
-          <td>22</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <br />
-    <br />
-    <br />
-
-    <div class='row gy-3 gx-1'>
-      <div class='col-4'>
-        <div class='card text-bg-danger'>
-          <div class='card-header text-center'>Header</div>
-          <div class='card-body text-center'>
-            <h6 class='card-title'>This is title</h6>
-            <p>This is content of our box</p>
-            <button class='btn btn-dark'>Go</button>
+      <div class="card mt-2 ">
+          <div class="card-body">
+            {{#each productData.actionList}}
+              {{#if isWarning}}
+                <button type="button" class="btn btn-warning mx-2">{{name}}</button>
+              {{/if}}
+              {{#if isError}}
+                <button type="button" class="btn btn-outline-danger mx-2">{{name}}</button>
+              {{/if}}
+              {{#if isSuccess}}
+                <button type="button" class="btn btn-success mx-2">{{name}}</button>
+              {{/if}}
+              {{#if isGood}}
+                <button type="button" class="btn btn-outline-success mx-2">{{name}}</button>
+              {{/if}}
+            {{/each}}
           </div>
-          <div class='card-footer text-center'>Footer</div>
-        </div>
       </div>
-      <div class='col-4'>
-        <div class='card text-bg-danger'>
-          <div class='card-header text-center'>Header</div>
-          <div class='card-body text-center'>
-            <h6 class='card-title'>This is title</h6>
-            <p>This is content of our box</p>
-            <button class='btn btn-dark'>Go</button>
-          </div>
-          <div class='card-footer text-center'>Footer</div>
-        </div>
-      </div>
-      <div class='col-4'>
-        <div class='card text-bg-danger'>
-          <div class='card-header text-center'>Header</div>
-          <div class='card-body text-center'>
-            <h6 class='card-title'>This is title</h6>
-            <p>This is content of our box</p>
-            <button class='btn btn-dark'>Go</button>
-          </div>
-          <div class='card-footer text-center'>Footer</div>
-        </div>
-      </div>
-      <div class='col-4'>
-        <div class='card text-bg-danger'>
-          <div class='card-header text-center'>Header</div>
-          <div class='card-body text-center'>
-            <h6 class='card-title'>This is title</h6>
-            <p>This is content of our box</p>
-            <button class='btn btn-dark'>Go</button>
-          </div>
-          <div class='card-footer text-center'>Footer</div>
-        </div>
-      </div>
-      <div class='col-4'>
-        <div class='card text-bg-danger'>
-          <div class='card-header text-center'>Header</div>
-          <div class='card-body text-center'>
-            <h6 class='card-title'>This is title</h6>
-            <p>This is content of our box</p>
-            <button class='btn btn-dark'>Go</button>
-          </div>
-          <div class='card-footer text-center'>Footer</div>
-        </div>
-      </div>
+  
+<br><br><br><br><hr><br>
+<h2 class="text-center">{{goodsOtherBlock.title}}</h2>
 
-    </div>
-  </div>
-</main>
+
+
+ <div class="row">
+      {{#each goodsOtherBlock.cards}}
+       
+        {{>shopcard}}
+        
+          
+      {{/each}}
+</div> 
+
+   <br>
+  <hr>
+  <br> <br>
+  {{>shopaction}}
+  <br>
+  <br>
+  <hr>
+  
+  {{>shopfooter}}

@@ -1,0 +1,23 @@
+<main>
+  {{#with newsData}}
+<img src={{photo}}  style="width:100%">
+<br><br>
+{{#with head}}
+<h1>{{heading}}</h1>
+
+<p>{{description}}</p>
+<br>
+{{/with}}
+{{#each body}}
+<h2>{{title}}</h2>
+<p>{{text}}</p>
+{{/each}}
+{{/with}}
+<br>
+<hr>
+<br>
+
+
+
+  
+  
