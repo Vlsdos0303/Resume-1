@@ -1,7 +1,7 @@
     <div class="card mx-5 mt-3">
     {{#with navigation}}
      <div class='nav'>
-      <div class="col-7">
+      <div class="col-6">
         <div class="nav-item">
          <h1>{{Logo}}</h1>
         </div>
@@ -10,7 +10,11 @@
       
        {{#each links}}
         <div class="nav-item">
+          {{#if @last}}
+          <a class='text-end nav-link disabled' href='{{href}}'>{{text}}</a>
+          {{else}}
           <a class='text-end nav-link' href='{{href}}'>{{text}}</a>
+          {{/if}}
         </div>
       {{/each}}
      
