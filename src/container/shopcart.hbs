@@ -1,0 +1,43 @@
+<main>
+  <div class="mb-5">
+    <div class="row">
+    {{#with header}}
+      <h1 class="col-8">{{title}}</h1>
+      <div class="col-4">
+        {{#with button}}
+          <button
+            class='text-end btn btn-outline-secondary'
+            href='{{link}}'
+          >{{text}}</button>
+        {{/with}}
+        </div>
+{{/with}}
+</div>
+<br>
+<div><hr></div>
+
+{{>cartGoodsItem}}
+
+<div><hr></div>
+
+{{#with total}}
+<div class="row">
+<div class="col-8">
+  <h2>{{title}}</h2>
+  <h1>{{amount}}</h1>
+  <p>{{delivery}}</p>
+</div>
+<div class="col-4">
+  {{#each buttons}}
+  {{#if isSuccess}}
+  <button href="{{link}}" class="btn btn-success mb-3 mt-4">{{text}}</button>
+  {{/if}}
+   {{#if isOutline}}
+  <button href="{{link}}" class="btn btn-outline-success text-end">{{text}}</button>
+  {{/if}}
+  {{/each}}
+  </div>
+{{/with}}
+</div>
+<div><hr></div>
+</main>
